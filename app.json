@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "eFusion",
+    "slug": "eFusion",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
