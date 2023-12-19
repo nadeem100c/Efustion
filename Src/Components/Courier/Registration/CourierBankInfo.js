@@ -11,7 +11,6 @@ import {
     ScrollView,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { SelectList } from 'react-native-dropdown-select-list'
 import * as SplashScreen from 'expo-splash-screen'
 
 
@@ -25,13 +24,12 @@ import {
     Montserrat_600SemiBold,
     Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat';
-import { styleProps } from 'react-native-web/dist/cjs/modules/forwardedProps'
 
 
 const windowWidth = Dimensions.get("screen").width;
 const windowHeight = Dimensions.get("window").height
 
-const BankingInfo = ({ navigation }) => {
+const CourierBankInfo = ({ navigation }) => {
 
 
 
@@ -82,7 +80,7 @@ const BankingInfo = ({ navigation }) => {
                                 style={Styles.backbtn}
                             />
                         </TouchableOpacity>
-                        <Text style={Styles.headerTitle}>s’INSCRIRE EN TANT {"\n"} QUE REPARATEUR</Text>
+                        <Text style={Styles.headerTitle}>s’INSCRIRE EN TANT {"\n"} QUE COURIER</Text>
                         <Text style={{
                             color: "white",
                             fontSize: 15,
@@ -119,7 +117,7 @@ const BankingInfo = ({ navigation }) => {
                     </View>
                     <View style={{ height: "30%", backgroundColor: "green" }}>
                         <View style={Styles.buttonlist}>
-                            <Text style = {Styles.inputtitle}>
+                            <Text style={Styles.inputtitle}>
                                 Nom du porteur de la carte
                             </Text>
                             <View style={Styles.txtinput}>
@@ -128,7 +126,7 @@ const BankingInfo = ({ navigation }) => {
                                 />
                             </View>
 
-                            <Text style={[Styles.inputtitle,{marginTop:10,}]}>
+                            <Text style={[Styles.inputtitle, { marginTop: 10, }]}>
                                 Numéro de la carte
                             </Text>
                             <View style={Styles.txtinput}>
@@ -136,26 +134,29 @@ const BankingInfo = ({ navigation }) => {
                                 />
                             </View>
 
-                            <View style={{ flexDirection: "row", marginRight: 10, marginTop: 20 ,marginLeft:10}}>
+                            <View style={{ flexDirection: "row", marginRight: 10, marginTop: 20, marginLeft: 10 }}>
                                 <View>
-                                    <Text style = {Styles.inputtitle}>Date d’expiration</Text>
+                                    <Text style={Styles.inputtitle}>Date d’expiration</Text>
                                     <TextInput
-                                    style={[Styles.cvv,{width:150}]}
+                                        style={[Styles.cvv, { width: 150 }]}
                                     />
                                 </View>
                                 <View style={{ marginLeft: 15 }}>
-                                    <Text style = {Styles.inputtitle}>CVV</Text>
+                                    <Text style={Styles.inputtitle}>CVV</Text>
                                     <TextInput
-                                        style={[Styles.cvv,{width:80}]}
+                                        style={[Styles.cvv, { width: 80 }]}
                                     />
                                 </View>
 
 
                             </View>
-                            <TouchableOpacity style={Styles.savebtn}>
+                            <TouchableOpacity style={Styles.savebtn}
+                                onPress={() => navigation.navigate("courieHome")}
+                            >
                                 <View style={{
                                     alignItems: "center",
                                 }}
+
                                 >
                                     <Text style={{
                                         color: "white",
@@ -174,7 +175,7 @@ const BankingInfo = ({ navigation }) => {
 
 }
 
-export default BankingInfo
+export default CourierBankInfo
 const Styles = StyleSheet.create({
     header: {
         height: 200,
@@ -268,7 +269,7 @@ const Styles = StyleSheet.create({
         borderRadius: 25,
         paddingLeft: 10
     },
-    inputtitle: {  
+    inputtitle: {
         fontWeight: "600",
         color: "#e6e1e1"
     }

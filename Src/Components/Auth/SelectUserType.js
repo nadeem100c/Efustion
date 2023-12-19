@@ -66,7 +66,9 @@ const SelectUserType = () => {
                     <Text style={styles.buttontxt}>Réparateur</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttons} >
+                <TouchableOpacity style={styles.buttons}
+                    onPress={() => navigation.navigate("courierPersonalInfo")}
+                >
                     <Text style={styles.buttontxt}>Courier</Text>
                 </TouchableOpacity>
 

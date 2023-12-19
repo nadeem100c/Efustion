@@ -25,15 +25,30 @@ import {
     Montserrat_600SemiBold,
     Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat';
-import { styleProps } from 'react-native-web/dist/cjs/modules/forwardedProps'
 
 
 const windowWidth = Dimensions.get("screen").width;
 const windowHeight = Dimensions.get("window").height
 
-const BankingInfo = ({ navigation }) => {
+const CourierIndentity = ({ navigation }) => {
+    const [selected, setSelected] = useState("");
+    const [modalVisible, setModalVisible] = useState(false);
 
 
+
+    const data = [
+        { key: '1', value: 'Nos Services', disabled: true },
+        { key: '2', value: 'Plomberie' },
+        { key: '3', value: 'Construction' },
+        { key: '4', value: 'Electriciens' },
+        { key: '5', value: 'Menuisier' },
+        { key: '6', value: 'menage' },
+        { key: '7', value: 'penture' },
+        { key: '8', value: 'Jardinage' },
+        { key: '9', value: 'Soudeur' },
+        { key: '10', value: 'Topisserie' },
+
+    ]
 
 
 
@@ -82,14 +97,14 @@ const BankingInfo = ({ navigation }) => {
                                 style={Styles.backbtn}
                             />
                         </TouchableOpacity>
-                        <Text style={Styles.headerTitle}>s’INSCRIRE EN TANT {"\n"} QUE REPARATEUR</Text>
+                        <Text style={Styles.headerTitle}>s’INSCRIRE EN TANT {"\n"} QUE COURIER</Text>
                         <Text style={{
                             color: "white",
                             fontSize: 15,
                             marginTop: 10,
                             fontFamily: "Montserrat_600SemiBold"
                         }}>
-                            Etape 4 sur 4
+                            Etape 3 sur 4
                         </Text>
                     </View>
 
@@ -102,68 +117,83 @@ const BankingInfo = ({ navigation }) => {
                     <View style={{
                         flex: 1,
                         backgroundColor: "#e8e8e8",
-
                     }}>
+                        <View style={{
+                            alignItems: "center",
+                            marginTop: 30
+                        }}>
 
-
-                        <View style={Styles.savebtn}>
-                            <View style={{ alignItems: "center", }}
-                            >
-                                <Text style={{ color: "white", fontFamily: "Montserrat_700Bold" }}>
-                                    12 MAD/mois
+                            <TextInput
+                                placeholder='Numéro de la carte nationale'
+                                style={Styles.inputfld}
+                                keyboardType='number-pad'
+                            />
+                            <View style={{
+                                marginTop: 20
+                            }}>
+                                <Text style={Styles.txt}>
+                                    Télécharger la face avant de la carte
                                 </Text>
                             </View>
-                        </View>
-
-
-                    </View>
-                    <View style={{ height: "30%", backgroundColor: "green" }}>
-                        <View style={Styles.buttonlist}>
-                            <Text style = {Styles.inputtitle}>
-                                Nom du porteur de la carte
-                            </Text>
-                            <View style={Styles.txtinput}>
-                                <TextInput
-
-                                />
-                            </View>
-
-                            <Text style={[Styles.inputtitle,{marginTop:10,}]}>
-                                Numéro de la carte
-                            </Text>
-                            <View style={Styles.txtinput}>
-                                <TextInput
-                                />
-                            </View>
-
-                            <View style={{ flexDirection: "row", marginRight: 10, marginTop: 20 ,marginLeft:10}}>
-                                <View>
-                                    <Text style = {Styles.inputtitle}>Date d’expiration</Text>
-                                    <TextInput
-                                    style={[Styles.cvv,{width:150}]}
-                                    />
-                                </View>
-                                <View style={{ marginLeft: 15 }}>
-                                    <Text style = {Styles.inputtitle}>CVV</Text>
-                                    <TextInput
-                                        style={[Styles.cvv,{width:80}]}
-                                    />
-                                </View>
-
-
-                            </View>
-                            <TouchableOpacity style={Styles.savebtn}>
-                                <View style={{
+                            <View style={Styles.uploadingbtn}>
+                                <TouchableOpacity style={{
                                     alignItems: "center",
                                 }}
+
                                 >
-                                    <Text style={{
-                                        color: "white",
-                                        fontFamily: "Montserrat_700Bold"
-                                    }}>
-                                        S’inscrire
+                                    <Text style={Styles.btntxt}>
+                                        Choisir un fichier
                                     </Text>
-                                </View>
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={{
+                                marginTop: 20
+                            }}>
+                                <Text style={Styles.txt}>
+                                    Télécharger la face arrière de la carte
+                                </Text>
+                            </View>
+                            <View style={Styles.uploadingbtn}>
+                                <TouchableOpacity style={{
+                                    alignItems: "center",
+                                }}
+
+                                >
+                                    <Text style={Styles.btntxt}>
+                                        Choisir un fichier
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+
+                            <View style={{
+                                marginTop: 20
+                            }}>
+                                <Text style={Styles.txt}>
+                                Télécharger la photo personnel ou de {"\n"} l’entreprise de livraison
+                                </Text>
+                            </View>
+                            <View style={Styles.uploadingbtn}>
+                                <TouchableOpacity style={{
+                                    alignItems: "center",
+                                }}
+
+                                >
+                                    <Text style={Styles.btntxt}>
+                                        Choisir un fichier
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+
+                        </View>
+
+                        <View style={Styles.savebtn}>
+                            <TouchableOpacity style={{ alignItems: "center", }}
+                                onPress={() => navigation.navigate("courierBankingInfo")}
+                            >
+                                <Text style={{ color: "white", fontFamily: "Montserrat_700Bold" }}>
+                                    Suivant
+                                </Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -174,7 +204,7 @@ const BankingInfo = ({ navigation }) => {
 
 }
 
-export default BankingInfo
+export default CourierIndentity
 const Styles = StyleSheet.create({
     header: {
         height: 200,
@@ -242,34 +272,5 @@ const Styles = StyleSheet.create({
     btntxt: {
         color: "white",
         fontFamily: "Montserrat_700Bold"
-    }, buttonlist: {
-        height: 400,
-        width: "90%",
-        backgroundColor: "white",
-        bottom: 250,
-        alignSelf: "center",
-        alignItems: "center",
-        borderRadius: 10,
-        paddingTop: 40
-
-    },
-    txtinput: {
-
-        height: 50,
-        width: "70%",
-        borderRadius: 25,
-        backgroundColor: "#e6e1e1",
-        justifyContent: "center",
-        paddingLeft: 20
-    },
-    cvv: {
-        height: 50,
-        backgroundColor: "#e6e1e1",
-        borderRadius: 25,
-        paddingLeft: 10
-    },
-    inputtitle: {  
-        fontWeight: "600",
-        color: "#e6e1e1"
     }
 })
